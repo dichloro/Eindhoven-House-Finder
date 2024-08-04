@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Houses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table.data, table.data th, table.data td {
+            border: 1px solid #ccc;
+        }
+        table.data th, table.data td {
+            padding: 8px;
+            text-align: left;
+        }
+        table.data th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search for Rental Houses</h1>
+    <form method="post" action="/">
+        <label for="bedrooms">Number of Bedrooms:</label>
+        <select id="bedrooms" name="bedrooms">
+            <option value="">Choose</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        <label for="max_price">Maximum Price:</label>
+        <select id="max_price" name="max_price">
+            <option value="">No Limit</option>
+            <option value="500">€500</option>
+            <option value="600">€600</option>
+            <option value="700">€700</option>
+            <option value="800">€800</option>
+            <option value="900">€900</option>
+            <option value="1000">€1000</option>
+            <option value="1200">€1200</option>
+            <option value="1500">€1500</option>
+            <option value="2000">€2000</option>
+        </select>
+
+        <button type="submit">Search</button>
+    </form>
+
+    {% if houses %}
+        <h2>Results</h2>
+        <div>{{ houses|safe }}</div>
+    {% endif %}
+
+    {% if errors %}
+        <div style="color: red;">
+            <strong>Errors:</strong> {{ errors }}
+        </div>
+    {% endif %}
+</body>
+</html>
